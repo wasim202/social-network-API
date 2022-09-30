@@ -1,0 +1,28 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server",
+    "user-seed": "node utils/user-seed.js",
+    "thought-seed": "node utils/thought-seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wasim202/social-network-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wasim202/social-network-API/issues"
+  },
+  "homepage": "https://github.com/wasim202/social-network-API#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.2"
+  }
+}
