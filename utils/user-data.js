@@ -1,18 +1,18 @@
 const userSeed = [
 {
-  name: "wasim",
+  username: "wasim",
   email: "wasim.sa@hotmail.com",
 },
 {
-  name: "josh",
+  username: "josh",
   email: "josh@email.com",
 },
 {
-  name: "rami",
+  username: "rami",
   email: "rami@email.com",
 },
 {
-  name: "sam",
+  username: "sam",
   email: "sam@email.com",
 },
 ];
