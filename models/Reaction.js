@@ -1,12 +1,15 @@
 const { Schema, model } = require('mongoose');
-
+const {ObjectId} = require('bson');
 
 // creating the reaction schema
 const reactionSchema = new Schema(
   {
    reactionId: {
     type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
+      default: () => new ObjectId(),
+   },
+   _id:{
+  _id:false,
    },
     reactionBody: {
         type:String,
@@ -20,7 +23,9 @@ const reactionSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (date) => timeSince(date)
+        get: (date) => {
+          if (date) return date.toISOString().split("T")[0];
+        },
       },
   },
   {

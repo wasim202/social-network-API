@@ -24,8 +24,8 @@ module.exports =  {
     createThought(req, res) {
       Thought.create(req.body)
         .then((thought) => {
-          return User.findByIdAndUpdate(
-          { _id: req.body.userId },
+          return User.findOneAndUpdate(
+          { username: req.body.username },
           { $addToSet: { thought: thought._id } },
           { new: true }
           )
@@ -35,11 +35,11 @@ module.exports =  {
           ? res.status(404).json({
               message: 'Thought created, but found no user with that ID',
             })
-          : res.json('Created the thought 🎉')
+          : res.json('Created the thought 🎉'))
         .catch((err) => {
           console.log(err);
           return res.status(500).json(err);
-        }));
+        });
     },
     // Delete a thought
     deleteThought(req, res) {
@@ -73,7 +73,7 @@ module.exports =  {
         .catch((err) => res.status(500).json(err));
     },
       // Add a thougth reaction
-  addThoughtReaction(req, res) {
+  addReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $addToSet: { reactions: req.body } },
@@ -87,7 +87,7 @@ module.exports =  {
       .catch((err) => res.status(500).json(err));
   },
   // Remove thougth reaction
-  removeThoughtReaction(req, res) {
+  removeReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $pull: { reactions: { reactionId: req.params.reactionId } } },
